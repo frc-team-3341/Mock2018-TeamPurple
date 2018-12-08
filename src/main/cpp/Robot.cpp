@@ -9,8 +9,14 @@
 
 #include <Commands/Scheduler.h>
 #include <SmartDashboard/SmartDashboard.h>
+#include <CameraServer.h>
+#include "WPILib.h"
+#include <opencv2/imgproc/imgproc.hpp>
+#include <opencv2/core/core.hpp>
+#include <iostream>
 
 ExampleSubsystem* Robot::m_subsystem;
+cs::UsbCamera camera1;
 
 DriveTrain* Robot::drive;
 OI* Robot::m_oi;
@@ -22,6 +28,15 @@ void Robot::RobotInit() {
   m_subsystem = new ExampleSubsystem();
   drive = new DriveTrain();
   m_oi = new OI();
+
+  camera1 = CameraServer::GetInstance()->StartAutomaticCapture();
+
+  camera1.SetResolution(1920, 1080);
+  camera1.SetFPS(60);
+  camera1.SetBrightness(10);
+  m_chooser.AddDefault("Default Auto", &m_defaultAuto);
+  m_chooser.AddObject("My Auto", &m_myAuto);
+  frc::SmartDashboard::PutData("Auto Modes", &m_chooser); 
 }
 
 /**

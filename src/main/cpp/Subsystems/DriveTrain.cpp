@@ -9,12 +9,13 @@
 #include "Commands/TankDrive.h"
 #include "Commands/ArcadeDrive.h"
 
-DriveTrain::DriveTrain() : Subsystem("ExampleSubsystem"), left(new TalonSRX(2)), right(new TalonSRX(3)) {}
+DriveTrain::DriveTrain() : Subsystem("ExampleSubsystem"), left(new TalonSRX(2)), right(new TalonSRX(3)), us(new Ultrasonic(0, 1)) {us->SetAutomaticMode(true);}
 
 void DriveTrain::InitDefaultCommand() {
   // Set the default command for a subsystem here.
   // SetDefaultCommand(new MySpecialCommand());
  SetDefaultCommand(new TankDrive());
+ 
  //SetDefaultCommand(new ArcadeDrive());
 
 }
@@ -31,3 +32,7 @@ RobotDrive* DriveTrain::getChassis()
 }
 // Put methods for controlling this subsystem
 // here. Call these from Commands.
+
+double DriveTrain::getDistanceUltrasonic() {
+	return us->GetRangeInches();
+}

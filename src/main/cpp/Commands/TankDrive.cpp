@@ -7,6 +7,8 @@
 
 #include "Commands/TankDrive.h"
 #include "Robot.h"
+#include "OI.h"
+
 
 TankDrive::TankDrive() {
   // Use Requires() here to declare subsystem dependencies
@@ -19,6 +21,9 @@ void TankDrive::Initialize() {}
 // Called repeatedly when this Command is scheduled to run
 void TankDrive::Execute() {
   Robot::drive->tankDrive(Robot::m_oi->getLeftStick()->GetY(), Robot::m_oi->getRightStick()->GetY());
+  if(Robot::drive->getDistanceUltrasonic() < 10){
+    Robot::drive->tankDrive(0, 0);
+  }
 }
 
 // Make this return true when this Command no longer needs to run execute()

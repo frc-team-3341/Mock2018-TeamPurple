@@ -10,18 +10,22 @@
 #include <Commands/Subsystem.h>
 #include "ctre/Phoenix.h"
 #include "RobotDrive.h"
+#include "WPILib.h"
+#include "math.h"
 
 class DriveTrain : public frc::Subsystem {
  private:
   // It's desirable that everything possible under private except
   // for methods that implement subsystem capabilities
-TalonSRX* left;
-TalonSRX* right;
-RobotDrive* chassis;
+  TalonSRX* left;
+  TalonSRX* right;
+  RobotDrive* chassis;
+  Ultrasonic* us;
 
  public:
   DriveTrain();
   void InitDefaultCommand() override;
   void tankDrive(double leftPower, double rightPower);
   RobotDrive* getChassis();
+  double getDistanceUltrasonic();
 };
