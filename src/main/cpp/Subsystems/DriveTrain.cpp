@@ -9,7 +9,7 @@
 #include "Commands/TankDrive.h"
 #include "Commands/ArcadeDrive.h"
 
-DriveTrain::DriveTrain() : Subsystem("ExampleSubsystem"), left(new WPI_TalonSRX(2)), right(new WPI_TalonSRX(3)) {}
+DriveTrain::DriveTrain() : Subsystem("ExampleSubsystem"), left(new TalonSRX(2)), right(new TalonSRX(3)) {}
 
 void DriveTrain::InitDefaultCommand() {
   // Set the default command for a subsystem here.
