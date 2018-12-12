@@ -11,7 +11,7 @@
 #include <SmartDashboard/SmartDashboard.h>
 
 ExampleSubsystem* Robot::m_subsystem;
-
+ServoMech* Robot::servo;
 DriveTrain* Robot::drive;
 OI* Robot::m_oi;
 void Robot::RobotInit() {
@@ -20,6 +20,7 @@ void Robot::RobotInit() {
   frc::SmartDashboard::PutData("Auto Modes", &m_chooser);
 
   m_subsystem = new ExampleSubsystem();
+  servo = new ServoMech();
   drive = new DriveTrain();
   m_oi = new OI();
 }

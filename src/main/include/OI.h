@@ -7,14 +7,23 @@
 
 #pragma once
 #include "Joystick.h"
+//#include "Button.h"
+//#include "JoystickButton.h"
+//#include "Button.h"
+#include "WPILib.h"
+
+using namespace frc;
+
 class OI {
 
  private:
   Joystick* leftStick;
   Joystick* rightStick;
-
+  Button* servo;
  public:
   OI();
   Joystick* getLeftStick();
   Joystick* getRightStick();
+ // Button* getServo();
+
 };

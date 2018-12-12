@@ -6,7 +6,8 @@
 /*----------------------------------------------------------------------------*/
 #include <Subsystems/ServoMech.h>
 #include "WPILib.h"
-#include "../RobotMap.h"
+#include "RobotMap.h"
+#include "Commands/BucketMove.h"
 
 ServoMech::ServoMech() : Subsystem("Servo"), purpleServo(new Servo(0)){
 
@@ -22,6 +23,7 @@ void ServoMech::InitDefaultCommand() {
 
 	// Set the default command for a subsystem here.
 	// SetDefaultCommand(new MySpecialCommand());
+	//SetDefaultCommand(new BucketMove(0));
 }
 
 void ServoMech::move(double angle){
