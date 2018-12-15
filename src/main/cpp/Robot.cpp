@@ -9,12 +9,15 @@
 #include "NetworkTablesInterface.h"
 #include <Commands/Scheduler.h>
 #include <SmartDashboard/SmartDashboard.h>
+#include "Commands/DriveForward.h"
 #include <iostream>
+
 
 ExampleSubsystem* Robot::m_subsystem;
 ServoMech* Robot::servo;
 DriveTrain* Robot::drive;
 OI* Robot::m_oi;
+
 void Robot::RobotInit() {
   m_chooser.AddDefault("Default Auto", &m_defaultAuto);
   m_chooser.AddObject("My Auto", &m_myAuto);
@@ -25,6 +28,8 @@ void Robot::RobotInit() {
   servo = new ServoMech();
   drive = new DriveTrain();
    m_oi = new OI();
+
+  
 
 }
 
@@ -67,12 +72,14 @@ void Robot::AutonomousInit() {
   //   m_autonomousCommand = &m_defaultAuto;
   // }
 
-  m_autonomousCommand = m_chooser.GetSelected();
-
-  if (m_autonomousCommand != nullptr) {
+  m_autonomousCommand = (new DriveForward(15));
+if (m_autonomousCommand != nullptr) {
+  std::cout << "fhfhjf" << std::endl;
     m_autonomousCommand->Start();
+    
   }
 }
+
 
 void Robot::AutonomousPeriodic() { frc::Scheduler::GetInstance()->Run(); }
 

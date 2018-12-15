@@ -17,6 +17,8 @@
 #include "Subsystems/ExampleSubsystem.h"
 #include "Subsystems/DriveTrain.h"
 #include "Subsystems/ServoMech.h"
+#include "Commands/DriveForward.h"
+#include "Commands/Turn.h"
 
 class Robot : public frc::TimedRobot {
  public:
@@ -39,6 +41,7 @@ class Robot : public frc::TimedRobot {
   // Have it null by default so that if testing teleop it
   // doesn't have undefined behavior and potentially crash.
   frc::Command* m_autonomousCommand = nullptr;
+  
   ExampleCommand m_defaultAuto;
   MyAutoCommand m_myAuto;
   frc::SendableChooser<frc::Command*> m_chooser;

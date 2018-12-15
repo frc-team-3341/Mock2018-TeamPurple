@@ -7,6 +7,7 @@ using namespace std;
 DriveForward::DriveForward(double _setpoint) : setpoint(_setpoint){
 
 	Requires(Robot::drive);
+	//std::cout << "yeeeeeeeet" << std::endl;
 
 }
 
@@ -17,7 +18,11 @@ void DriveForward::Initialize() {
 
 // Called repeatedly when this Command is scheduled to run
 void DriveForward::Execute() {
-	Robot::drive->tankDrive("magic",0.3,0.3);
+	position_avg = (-Robot::drive->leftDistance() + -Robot::drive->rightDistance()) / 2;
+	std::cout << position_avg << std::endl;
+	Robot::drive->tankDrive("magic", -setpoint,-setpoint);
+	std::cout << "help" << std::endl;
+	
 }
 
 // Make this return true when this Command no longer needs to run execute()

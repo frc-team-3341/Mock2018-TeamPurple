@@ -4,11 +4,12 @@
 using namespace std;
 Turn::Turn(double _setpoint) : setpoint(_setpoint) {
 	Requires(Robot::drive);
+	std::cout << "yee" << std::endl;
 }
 
 void Turn::Initialize() {
 	//Calculates distance that the robot drives along its turning circle
-	double diameter = 28;
+	double diameter = 24;
 	fDistance = fabs(M_PI*(diameter)*(setpoint/360));
 	Robot::drive->resetEncoders();
 }

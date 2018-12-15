@@ -24,8 +24,8 @@ void TankDrive::Initialize() {
 // Called repeatedly when this Command is scheduled to run
 void TankDrive::Execute() {
   Robot::drive->tankDrive(Robot::m_oi->getLeftStick()->GetY(), Robot::m_oi->getRightStick()->GetY());
-  std::cout << Robot::m_oi->getLeftStick()->GetY() << std::endl;
-   std::cout << Robot::m_oi->getLeftStick()->GetY() << std::endl;
+//  std::cout << Robot::m_oi->getLeftStick()->GetY() << std::endl;
+  // std::cout << Robot::m_oi->getLeftStick()->GetY() << std::endl;
 }
 
 // Make this return true when this Command no longer needs to run execute()
