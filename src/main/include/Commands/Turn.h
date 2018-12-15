@@ -12,6 +12,7 @@ class Turn : public Command {
 	void Interrupted();
 private:
 	double setpoint;
+	double error;
 	double fDistance;
 };
 

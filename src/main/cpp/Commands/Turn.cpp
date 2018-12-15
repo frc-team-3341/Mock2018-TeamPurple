@@ -17,17 +17,18 @@ void Turn::Initialize() {
 // Called repeatedly when this Command is scheduled to run
 void Turn::Execute() {
 	//turns either left or right depending on value passed
-	if (setpoint > 0) {
+	error = fDistance - (fabs(Robot::drive->leftDistance())+fabs(Robot::drive->rightDistance()))/2;
+	if (setpoint*error > 0) {
 		Robot::drive->tankDrive("Percent Output", -0.4, 0.4);//clockwise on red bobot
 	} else {
-	Robot::drive->tankDrive("Percent Output", 0.4, -0.4);//counterclockwise on red bobot
+		Robot::drive->tankDrive("Percent Output", 0.4, -0.4);//counterclockwise on red bobot
 	}
 
 }
 
 bool Turn::IsFinished(){
 	//Calculates remaining distance to the final distance
-	double error = fDistance - (fabs(Robot::drive->leftDistance())+fabs(Robot::drive->rightDistance()))/2;
+	
 	
 	//If the remaining distance is less than 1.3 in, end the turn
 	return fabs(error) < 1.3; //.3

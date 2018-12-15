@@ -10,6 +10,8 @@
 #include <Commands/Scheduler.h>
 #include <SmartDashboard/SmartDashboard.h>
 #include "Commands/DriveForward.h"
+#include "Commands/Middle.h"
+#include "Commands/Left.h"
 #include <iostream>
 
 
@@ -72,7 +74,7 @@ void Robot::AutonomousInit() {
   //   m_autonomousCommand = &m_defaultAuto;
   // }
 
-  m_autonomousCommand = (new DriveForward(15));
+  m_autonomousCommand = (new Left());
 if (m_autonomousCommand != nullptr) {
   std::cout << "fhfhjf" << std::endl;
     m_autonomousCommand->Start();

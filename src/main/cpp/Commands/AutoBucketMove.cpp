@@ -5,35 +5,31 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-#include "Commands/TankDrive.h"
-#include "Robot.h"
+#include "Commands/AutoBucketMove.h"
 #include <iostream>
 
-TankDrive::TankDrive() {
+AutoBucketMove::AutoBucketMove(double timeout)
+    : TimedCommand(timeout) {
   // Use Requires() here to declare subsystem dependencies
   // eg. Requires(Robot::chassis.get());
-  std::cout << "help2" << std::endl;
-  Requires(Robot::drive);
+  Requires(Robot::servo);
+  std::cout << "step 1" << std::endl;
 }
 
 // Called just before this Command runs the first time
-void TankDrive::Initialize() {
-  std::cout << "help3" << std::endl;
-}
+void AutoBucketMove::Initialize() {}
 
 // Called repeatedly when this Command is scheduled to run
-void TankDrive::Execute() {
-  Robot::drive->tankDrive(Robot::m_oi->getLeftStick()->GetY() * 2/3, Robot::m_oi->getRightStick()->GetY() * 2/3);
-//  std::cout << Robot::m_oi->getLeftStick()->GetY() << std::endl;
-  // std::cout << Robot::m_oi->getLeftStick()->GetY() << std::endl;
+void AutoBucketMove::Execute() 
+{
+  Robot::servo->move(0.2);
+    std::cout << "step 5" << std::endl;
+
 }
 
-// Make this return true when this Command no longer needs to run execute()
-bool TankDrive::IsFinished() { return false; }
-
-// Called once after isFinished returns true
-void TankDrive::End() {}
+// Called once after command times out
+void AutoBucketMove::End() {}
 
 // Called when another command which requires one or more of the same
 // subsystems is scheduled to run
-void TankDrive::Interrupted() {}
+void AutoBucketMove::Interrupted() {}

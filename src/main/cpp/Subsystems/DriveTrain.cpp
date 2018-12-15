@@ -37,9 +37,9 @@ DriveTrain::DriveTrain() : Subsystem("ExampleSubsystem"), left(new TalonSRX(2)),
 	left->SetSelectedSensorPosition(0,0,10);
 
 	left->Set(ControlMode::Position, 0);
-
-	left->ConfigMotionCruiseVelocity(15000, kTimeoutMs);
-	left->ConfigMotionAcceleration(6000, kTimeoutMs);
+//15000 3000
+	left->ConfigMotionCruiseVelocity(5000, kTimeoutMs);
+	left->ConfigMotionAcceleration(1000, kTimeoutMs);
 
 	right->ConfigSelectedFeedbackSensor(FeedbackDevice::CTRE_MagEncoder_Relative,0,10);
 	right->ConfigVelocityMeasurementPeriod(VelocityMeasPeriod::Period_10Ms,0);

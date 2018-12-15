@@ -15,7 +15,7 @@
 OI::OI() : leftStick(new Joystick(0)), rightStick(new Joystick(1)),
  servo(new JoystickButton(rightStick, 1)), invert(new JoystickButton(rightStick, 5)) {
   // Process operator interface input here.
-  servo->WhenPressed(new BucketMove(0));
+  servo->WhenPressed(new BucketMove(0.5));
   servo->WhenReleased(new BucketMove(1));
   invert->WhenPressed(new InvertDrive());
   invert->WhenReleased(new TankDrive());

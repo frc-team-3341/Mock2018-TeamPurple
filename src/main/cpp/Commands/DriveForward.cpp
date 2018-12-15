@@ -20,18 +20,20 @@ void DriveForward::Initialize() {
 void DriveForward::Execute() {
 	position_avg = (-Robot::drive->leftDistance() + -Robot::drive->rightDistance()) / 2;
 	std::cout << position_avg << std::endl;
-	Robot::drive->tankDrive("magic", -setpoint,-setpoint);
-	std::cout << "help" << std::endl;
+	Robot::drive->tankDrive(-0.3,-0.3);
+	//std::cout << "Left" << Robot::drive->leftDistance() << std::endl;
+	//std::cout << "Right" << Robot::drive->rightDistance() << std::endl;
 	
 }
 
 // Make this return true when this Command no longer needs to run execute()
 bool DriveForward::IsFinished() {
-	return fabs(position_avg - setpoint) < 3;
+	return fabs(fabs(position_avg) - setpoint) < 3;
 }
 
 // Called once after isFinished returns true
 void DriveForward::End() {
+	Robot::drive->tankDrive(0, 0);
 	std::cout << "error is finished and REACHED END " << fabs(position_avg - setpoint) << std::endl;
 }
 
