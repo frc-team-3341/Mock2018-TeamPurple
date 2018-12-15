@@ -9,7 +9,7 @@
 #include "RobotMap.h"
 #include "Commands/BucketMove.h"
 
-ServoMech::ServoMech() : Subsystem("Servo"), purpleServo(new Servo(0)){
+ServoMech::ServoMech() : Subsystem("Servo"), purpleServo(new Servo(9)){
 
 }
 
@@ -23,7 +23,7 @@ void ServoMech::InitDefaultCommand() {
 
 	// Set the default command for a subsystem here.
 	// SetDefaultCommand(new MySpecialCommand());
-	//SetDefaultCommand(new BucketMove(0));
+	SetDefaultCommand(new BucketMove(1));
 }
 
 void ServoMech::move(double angle){

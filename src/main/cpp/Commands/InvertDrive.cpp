@@ -5,35 +5,34 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-#include "Commands/TankDrive.h"
+#include "Commands/InvertDrive.h"
 #include "Robot.h"
-#include <iostream>
 
-TankDrive::TankDrive() {
+InvertDrive::InvertDrive() {
   // Use Requires() here to declare subsystem dependencies
   // eg. Requires(Robot::chassis.get());
-  std::cout << "help2" << std::endl;
-  Requires(Robot::drive);
+    Requires(Robot::drive);
 }
 
 // Called just before this Command runs the first time
-void TankDrive::Initialize() {
-  std::cout << "help3" << std::endl;
-}
+void InvertDrive::Initialize()
+ 
+ {
+   Robot::drive->invertMotors();
+ }
 
 // Called repeatedly when this Command is scheduled to run
-void TankDrive::Execute() {
-  Robot::drive->tankDrive(Robot::m_oi->getLeftStick()->GetY(), Robot::m_oi->getRightStick()->GetY());
-  std::cout << Robot::m_oi->getLeftStick()->GetY() << std::endl;
-   std::cout << Robot::m_oi->getLeftStick()->GetY() << std::endl;
+void InvertDrive::Execute() 
+{
+
 }
 
 // Make this return true when this Command no longer needs to run execute()
-bool TankDrive::IsFinished() { return false; }
+bool InvertDrive::IsFinished() { return false; }
 
 // Called once after isFinished returns true
-void TankDrive::End() {}
+void InvertDrive::End() {}
 
 // Called when another command which requires one or more of the same
 // subsystems is scheduled to run
-void TankDrive::Interrupted() {}
+void InvertDrive::Interrupted() {}

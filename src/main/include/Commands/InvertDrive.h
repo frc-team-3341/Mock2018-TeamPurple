@@ -6,28 +6,15 @@
 /*----------------------------------------------------------------------------*/
 
 #pragma once
-#include "Joystick.h"
-//#include "Button.h"
-//#include "JoystickButton.h"
-//#include "Button.h"
-#include "WPILib.h"
 
-using namespace frc;
+#include <Commands/Command.h>
 
-class OI {
-
- private:
-  Joystick* leftStick;
-  Joystick* rightStick;
- // Joystick* inLeftStick;
- // Joystick* inRightStick;
-  Button* servo;
-  Button* invert;
+class InvertDrive : public frc::Command {
  public:
-  OI();
-  Joystick* getLeftStick();
-  Joystick* getRightStick();
-  
- // Button* getServo();
-
+  InvertDrive();
+  void Initialize() override;
+  void Execute() override;
+  bool IsFinished() override;
+  void End() override;
+  void Interrupted() override;
 };

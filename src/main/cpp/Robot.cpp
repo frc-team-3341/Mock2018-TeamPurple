@@ -6,9 +6,10 @@
 /*----------------------------------------------------------------------------*/
 
 #include "Robot.h"
-
+#include "NetworkTablesInterface.h"
 #include <Commands/Scheduler.h>
 #include <SmartDashboard/SmartDashboard.h>
+#include <iostream>
 
 ExampleSubsystem* Robot::m_subsystem;
 ServoMech* Robot::servo;
@@ -19,10 +20,12 @@ void Robot::RobotInit() {
   m_chooser.AddObject("My Auto", &m_myAuto);
   frc::SmartDashboard::PutData("Auto Modes", &m_chooser);
 
+ 
   m_subsystem = new ExampleSubsystem();
   servo = new ServoMech();
   drive = new DriveTrain();
-  m_oi = new OI();
+   m_oi = new OI();
+
 }
 
 /**
@@ -86,7 +89,12 @@ void Robot::TeleopInit() {
 
 void Robot::TeleopPeriodic() { frc::Scheduler::GetInstance()->Run(); }
 
-void Robot::TestPeriodic() {}
+void Robot::TestPeriodic() 
+{
+  std::cout << NetworkTablesInterface::getDistance() << std::endl;
+  std::cout << NetworkTablesInterface::getAngle() << std::endl;
+  std::cout << NetworkTablesInterface::getAltitude() << std::endl;
+}
 
 #ifndef RUNNING_FRC_TESTS
 START_ROBOT_CLASS(Robot)

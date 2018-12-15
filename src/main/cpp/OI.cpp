@@ -9,11 +9,18 @@
 #include "ctre/Phoenix.h"
 #include <WPILib.h>
 #include "Commands/BucketMove.h"
+#include "Commands/InvertDrive.h"
+#include "Commands/TankDrive.h"
 
-OI::OI() : leftStick(new Joystick(1)), rightStick(new Joystick(1)), servo(new JoystickButton(leftStick, 11)) {
+OI::OI() : leftStick(new Joystick(0)), rightStick(new Joystick(1)),
+ servo(new JoystickButton(rightStick, 1)), invert(new JoystickButton(rightStick, 5)) {
   // Process operator interface input here.
-  servo->WhenPressed(new BucketMove(1));
-  servo->WhenReleased(new BucketMove(0));
+  servo->WhenPressed(new BucketMove(0));
+  servo->WhenReleased(new BucketMove(1));
+  invert->WhenPressed(new InvertDrive());
+  invert->WhenReleased(new TankDrive());
+
+  
 }
 
 Joystick* OI::getLeftStick()

@@ -19,9 +19,25 @@ TalonSRX* left;
 TalonSRX* right;
 RobotDrive* chassis;
 
+  double circumference = 6 * M_PI; //diameter = 6 inches
+	int kTimeoutMs = 30;
+
  public:
   DriveTrain();
   void InitDefaultCommand() override;
   void tankDrive(double leftPower, double rightPower);
   RobotDrive* getChassis();
+  void invertMotors();
+
+  void tankDrive(std::string s, double leftVal, double rightVal);
+
+	double Limit(double num, double max);
+
+	double getSpeed();
+	double leftDistance(); //inches
+	double rightDistance(); //inches
+	void resetEncoders();
+
+
+
 };

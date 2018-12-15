@@ -5,29 +5,18 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-#pragma once
-#include "Joystick.h"
-//#include "Button.h"
-//#include "JoystickButton.h"
-//#include "Button.h"
-#include "WPILib.h"
+#ifndef NETWORKTABLESINTERFACE_H_
+#define NETWORKTABLESINTERFACE_H_
 
-using namespace frc;
 
-class OI {
+#include "NetworkTables/NetworkTableInstance.h"
 
- private:
-  Joystick* leftStick;
-  Joystick* rightStick;
- // Joystick* inLeftStick;
- // Joystick* inRightStick;
-  Button* servo;
-  Button* invert;
- public:
-  OI();
-  Joystick* getLeftStick();
-  Joystick* getRightStick();
-  
- // Button* getServo();
+class NetworkTablesInterface {
+public:
 
+	static double getDistance();
+	static double getAngle();
+	static double getAltitude();
 };
+
+#endif /* NETWORKTABLESINTERFACE_H_ */
