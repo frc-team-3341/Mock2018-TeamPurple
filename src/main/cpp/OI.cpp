@@ -13,8 +13,8 @@
 
 OI::OI() : leftStick(new Joystick(0)), rightStick(new Joystick(1)), servoButton(new JoystickButton(leftStick, 1)) {
   // Process operator interface input here.
-  servoButton->WhenPressed(new BucketMove(0.5)); // opens bucket
-	servoButton->WhenReleased(new BucketMove(0)); // closes bucket
+  servoButton->WhenPressed(new BucketMove(0)); // opens bucket
+	servoButton->WhenReleased(new BucketMove(1)); // closes bucket
 }
 
 Joystick* OI::getLeftStick()
